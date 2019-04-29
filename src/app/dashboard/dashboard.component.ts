@@ -40,6 +40,7 @@ export class DashboardComponent implements OnInit {
   dummyRow = new Array(this.DASHBOARD_ROW);
 
   widgets = WIDGETS;
+  sortedWidgets: Array < Widget >;
   widgetArray: Array < Array < Widget > > = [];
 
   widgetTypes = [
@@ -76,16 +77,26 @@ export class DashboardComponent implements OnInit {
     let currentSpan = 0;
     let tmpArray: Widget[] = [];
 
+    this.sortedWidgets = this.widgets.sort((widget1, widget2) => {
+      if (widget1.order > widget2.order) {
+        return 1;
+      }
+      if (widget1.order < widget2.order) {
+        return -1;
+      }
+      return 0;
+    });
+
     let iter: any;
-    for (iter of Object.keys(this.widgets)) {
-      if (currentSpan + this.widgets[iter].colSpan > this.DASHBOARD_COLUMN) {
+    for (iter of Object.keys(this.sortedWidgets)) {
+      if (currentSpan + this.sortedWidgets[iter].colSpan > this.DASHBOARD_COLUMN) {
         this.widgetArray.push(tmpArray);
         tmpArray = [];
         currentSpan = 0;
         rowCount++;
       }
-      tmpArray.push(this.widgets[iter]);
-      currentSpan += this.widgets[iter].colSpan;
+      tmpArray.push(this.sortedWidgets[iter]);
+      currentSpan += this.sortedWidgets[iter].colSpan;
     }
     this.widgetArray.push(tmpArray);
 

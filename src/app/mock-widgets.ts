@@ -11,7 +11,7 @@ export const WIDGETS: Widget[] = [
   },
   {
     id: 1,
-    order: 2,
+    order: 3,
     title: 'Widget1',
     typeID: 1,
     colSpan: 1,
@@ -19,7 +19,7 @@ export const WIDGETS: Widget[] = [
   },
   {
     id: 2,
-    order: 3,
+    order: 4,
     title: 'Widget2',
     typeID: 2,
     colSpan: 1,
@@ -27,7 +27,7 @@ export const WIDGETS: Widget[] = [
   },
   {
     id: 3,
-    order: 4,
+    order: 3,
     title: 'Widget3',
     typeID: 3,
     colSpan: 2,
