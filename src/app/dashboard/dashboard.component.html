@@ -1,0 +1,14 @@
+<table class="table table-lg-responsive table-bordered" style="text-align: center;">
+  <thead>
+  <tr>
+    <th *ngFor="let it of dummyColumn; let i = index">Column {{ i + 1 }}</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let itWidgetRow of widgetArray; let i = index">
+    <td *ngFor="let itWidget of itWidgetRow; let j = index" [colSpan]="itWidget.colSpan">
+      <app-widget [type]="widgetTypes[itWidget.typeID]"></app-widget>
+    </td>
+  </tr>
+  </tbody>
+</table>
